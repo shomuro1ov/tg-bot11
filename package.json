@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/shomuro1ov/tg-bot11/issues"
   },
-  "homepage": "https://github.com/shomuro1ov/tg-bot11#readme"
+  "homepage": "https://github.com/shomuro1ov/tg-bot11#readme",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.66.0"
+  }
 }
