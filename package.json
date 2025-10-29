@@ -19,5 +19,8 @@
   "homepage": "https://github.com/shomuro1ov/tg-bot11#readme",
   "dependencies": {
     "node-telegram-bot-api": "^0.66.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
