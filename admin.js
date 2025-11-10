@@ -1,23 +1,40 @@
-import TelegramBot from "node-telegram-bot-api";
+const {Telegraf, Markup} =require('telegraf')
 
-const TOKEN = "8428079855:AAGHQx0lBijRaiPfvyB61iDrLFfLszNc7BI";
+const TOKEN = "8428079855:AAEvmUMk1nMNZvmdW9jWfPmCRvHCR4LIs_o";
 
-const bot = new TelegramBot(TOKEN, { polling: true });
+const bot = new Telegraf(TOKEN);
 
-bot.on("message", function (msg) {
-  const chatId = msg.chat.id;
-  const firstName = msg.chat.first_name;
-
-  console.log(msg);
-  bot.sendMessage(chatId, `xush kelipsiz, ${firstName} `, {
-    reply_markup: {
-      keyboard: [
-        [{ text: "boshlash" }],
-        [{ text: "menu" }, { text: "sozlamalar" }],
-      ],
-      remove_keyboard: true 
-    },
-  });
+bot.start((ctx) => {
+  ctx.reply(
+    'Salom! 👋 Kafe menyusiga xush kelibsiz!',
+    Markup.keyboard([
+      ['🍔 Menyu', 'ℹ️ Biz haqimizda']
+    ]).resize()
+  );
 });
 
-console.log("bot ishga tushdi..");
+
+bot.hears('🍔 Menyu', (ctx) => {
+  ctx.reply(
+    'Quyidagi menyudan tanlang:',
+    Markup.inlineKeyboard([
+      [Markup.button.callback('🥪 Sendvich', 'sendvich')],
+      [Markup.button.callback('☕️ Kofe', 'kofe')],
+      [Markup.button.callback('🍰 Desert', 'desert')]
+    ])
+  );
+});
+
+
+bot.action('sendvich', (ctx) => ctx.reply('👉 Siz Sendvichni tanladingiz'));
+bot.action('kofe', (ctx) => ctx.reply('👉 Siz Kofeni tanladingiz'));
+bot.action('desert', (ctx) => ctx.reply('👉 Siz Desertni tanladingiz'));
+
+
+bot.hears('ℹ️ Biz haqimizda', (ctx) => {
+  ctx.reply('Biz mazali taomlar taklif qiluvchi qulay kafe-miz 😋');
+});
+
+
+bot.launch()
+console.log('bot is running...');
