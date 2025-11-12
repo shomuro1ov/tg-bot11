@@ -4,6 +4,11 @@ const TOKEN = "8428079855:AAEvmUMk1nMNZvmdW9jWfPmCRvHCR4LIs_o";
 
 const bot = new Telegraf(TOKEN);
 
+bot.command("photo", (ctx) => {
+  ctx.replyWithPhoto({ source: "cate.jgeg"} , {caption: "TEST"});
+})
+
+bot.launch();
 bot.start((ctx) => {
   ctx.reply(
     'Salom! 👋 Kafe menyusiga xush kelibsiz!',
