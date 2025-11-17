@@ -1,7 +1,7 @@
 const { Telegraf, Markup, session, Scenes } = require("telegraf");
-const mainScene = require("./main_scene");
-const pizzaScene = require("./pizza_scene");
-const drinkScene = require("./drink_scene");
+const mainScene = require("./main_scare");
+const pizzaScene = require("./pizza_scare");
+const drinkScene = require("./drink_scere");
 const bot = new Telegraf("8428079855:AAEvmUMk1nMNZvmdW9jWfPmCRvHCR4LIs_o");
 const stage = new Scenes.Stage([mainScene, pizzaScene, drinkScene]);
 bot.use(session());
