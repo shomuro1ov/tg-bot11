@@ -3,7 +3,7 @@ const mainScene = require("./main_scare");
 const pizzaScene = require("./pizza_scare");
 const drinkScene = require("./drink_scere");
 const bot = new Telegraf("8428079855:AAEvmUMk1nMNZvmdW9jWfPmCRvHCR4LIs_o");
-const stage = new Scenes.Stage([mainScene, pizzaScene, drinkScene]);
+const stage = new Scenes.Stage([mainScene, pizzaScare, drinkScere]);
 bot.use(session());
 bot.use(stage.middleware());
 
