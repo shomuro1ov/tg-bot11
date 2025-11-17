@@ -1,13 +1,13 @@
-const {Telegraf, Markup, session, Scenes } = require('telegraf')
-const reg_scene = require("./reg_scene");
-const TOKEN = "8428079855:AAEvmUMk1nMNZvmdW9jWfPmCRvHCR4LIs_o";
-const stage = new Scenes.Stage([reg_scene]);
-const bot = new Telegraf(TOKEN);
+const { Telegraf, Markup, session, Scenes } = require("telegraf");
+const mainScene = require("./main_scene");
+const pizzaScene = require("./pizza_scene");
+const drinkScene = require("./drink_scene");
+const bot = new Telegraf("8428079855:AAEvmUMk1nMNZvmdW9jWfPmCRvHCR4LIs_o");
+const stage = new Scenes.Stage([mainScene, pizzaScene, drinkScene]);
 bot.use(session());
 bot.use(stage.middleware());
 
-bot.start((ctx) => ctx.scene.enter('reg'))
-
+bot.start((ctx) => ctx.scene.enter("main"));
 
 bot.launch();
 // bot.command("photo", (ctx) => {
